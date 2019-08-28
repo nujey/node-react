@@ -12,6 +12,7 @@
 </head>
 <body>
   <div id="like_button_container"></div>
+  <a href="https://baidu.com" id="target">百度</a>
   <script>
     'use strict'
     const e = React.createElement;
@@ -29,9 +30,35 @@
         )
       }
     }
-    const domContainer = document.querySelector('#like_button_container')
 
-    ReactDom.render(e(LikeButton), domContainer)
+    window.addEventListener('unload', function(event) {
+      let xhr = new XMLHttpRequest()
+
+      xhr.open('post', '/log', false)
+
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+      xhr.send('foo=bar')
+    })
+
+    function log() {
+      let xhr = new XMLHttpRequest()
+
+      xhr.open('post', '/log', true)
+
+      xhr.setRequestHeader('Content-Type', 'application/x-wwww-form-urlencoded');
+
+      xhr.send('foo=bar')
+    }
+
+    window.addEventListener('unload', function(event) {
+      log()
+      // 大数据量的循环 来保证足够的时间发送ajax
+    })
+
+    // const domContainer = document.querySelector('#like_button_container')
+
+    // ReactDom.render(e(LikeButton), domContainer)
   </script>
 </body>
 </html>
